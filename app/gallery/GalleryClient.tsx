@@ -60,11 +60,11 @@ export default function GalleryClient() {
             Aquascape Builder
           </Link>
           <nav className="flex items-center gap-4 text-sm">
-            <Link
-              href="/gallery"
-              className="font-medium text-forest"
-            >
+            <Link href="/gallery" className="font-medium text-forest">
               Gallery
+            </Link>
+            <Link href="/equipment" className="font-medium text-forest/60 transition-colors hover:text-forest">
+              Equipment
             </Link>
             <Link
               href="/builder"

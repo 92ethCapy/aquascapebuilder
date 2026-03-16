@@ -2,8 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import UnderwaterScene from "@/src/components/UnderwaterSceneLoader";
 import { GALLERY_TANKS } from "@/src/data/gallery";
+import { ROCKS, LIGHTS } from "@/src/data/equipment";
 
 const SHOWCASE_TANKS = GALLERY_TANKS.slice(0, 6);
+const SHOWCASE_ROCKS = ROCKS.slice(0, 3);
+const SHOWCASE_LIGHT = LIGHTS[0];
 
 export default function Home() {
   return (
@@ -20,6 +23,12 @@ export default function Home() {
               className="text-sm font-medium text-white/70 transition-colors hover:text-white"
             >
               Gallery
+            </Link>
+            <Link
+              href="/equipment"
+              className="text-sm font-medium text-white/70 transition-colors hover:text-white"
+            >
+              Equipment
             </Link>
             <Link
               href="/builder"
@@ -179,6 +188,104 @@ export default function Home() {
               className="group inline-flex items-center gap-2 rounded-full bg-sage/10 px-7 py-3 text-sm font-semibold text-forest transition-all hover:bg-sage/20"
             >
               View all {GALLERY_TANKS.length} layouts
+              <svg
+                className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Equipment Showcase */}
+      <section className="bg-soft-white px-6 py-24">
+        <div className="mx-auto max-w-7xl">
+          <p className="mb-3 text-center text-sm font-medium uppercase tracking-widest text-sage">
+            Hardscape & Lighting
+          </p>
+          <h2 className="mb-4 text-center text-3xl font-bold tracking-tight text-deep-green md:text-4xl">
+            Premium equipment for your tank
+          </h2>
+          <p className="mx-auto mb-12 max-w-lg text-center text-sm leading-relaxed text-forest/60">
+            Browse our selection of Vietnamese aquascaping stones and WeeK LED
+            lighting — each piece hand-picked with expert tips.
+          </p>
+
+          {/* Rocks preview */}
+          <div className="grid gap-5 sm:grid-cols-3">
+            {SHOWCASE_ROCKS.map((rock) => (
+              <Link
+                key={rock.id}
+                href="/equipment#rocks"
+                className="group relative overflow-hidden rounded-2xl shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="relative aspect-square">
+                  <Image
+                    src={rock.image}
+                    alt={rock.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h3 className="text-base font-semibold text-white">
+                      {rock.name}
+                    </h3>
+                    <p className="mt-0.5 text-xs text-white/60">
+                      {rock.texture} · {rock.bestStyles.join(", ")}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Light preview */}
+          <Link
+            href="/equipment#lights"
+            className="group mt-6 flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:flex-row"
+          >
+            <div className="relative aspect-[4/3] shrink-0 overflow-hidden sm:w-80">
+              <Image
+                src={SHOWCASE_LIGHT.image}
+                alt={SHOWCASE_LIGHT.alt}
+                fill
+                sizes="(max-width: 640px) 100vw, 320px"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div className="flex flex-1 flex-col justify-center p-5 sm:p-8">
+              <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-sage">
+                {SHOWCASE_LIGHT.brand} Lighting
+              </p>
+              <h3 className="mb-2 text-xl font-bold text-deep-green">
+                {SHOWCASE_LIGHT.model}
+              </h3>
+              <p className="mb-3 text-sm leading-relaxed text-forest/50">
+                {SHOWCASE_LIGHT.bestFor}
+              </p>
+              <span className="text-sm font-medium text-sage transition-colors group-hover:text-forest">
+                View all lighting →
+              </span>
+            </div>
+          </Link>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/equipment"
+              className="group inline-flex items-center gap-2 rounded-full bg-sage/10 px-7 py-3 text-sm font-semibold text-forest transition-all hover:bg-sage/20"
+            >
+              Browse all equipment
               <svg
                 className="h-4 w-4 transition-transform group-hover:translate-x-1"
                 fill="none"
