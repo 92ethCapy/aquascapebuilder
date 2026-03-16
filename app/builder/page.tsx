@@ -37,9 +37,17 @@ export default function BuilderPage() {
           >
             Aquascape Builder
           </Link>
-          <span className="rounded-full bg-sage/10 px-4 py-1.5 text-xs font-medium text-forest">
-            Builder Mode
-          </span>
+          <nav className="flex items-center gap-4 text-sm">
+            <Link
+              href="/gallery"
+              className="font-medium text-forest/60 transition-colors hover:text-forest"
+            >
+              Gallery
+            </Link>
+            <span className="rounded-full bg-sage/10 px-4 py-1.5 text-xs font-medium text-forest">
+              Builder Mode
+            </span>
+          </nav>
         </div>
       </header>
 
