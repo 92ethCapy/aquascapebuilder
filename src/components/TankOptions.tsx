@@ -52,16 +52,15 @@ export default function TankOptions({ state, onStateChange }: TankOptionsProps) 
     onStateChange({ ...state, lighting });
 
   return (
-    <div className="glass-panel-strong rounded-2xl p-6 shadow-sm">
-      <h2 className="mb-1 text-lg font-semibold text-deep-green">
+    <div className="glass-dark-strong rounded-2xl p-6 shadow-lg">
+      <h2 className="mb-1 text-lg font-semibold text-white/90">
         Configure Your Tank
       </h2>
-      <p className="mb-8 text-sm text-forest/60">
+      <p className="mb-8 text-sm text-white/35">
         Select options to build your aquascape
       </p>
 
       <div className="space-y-8">
-        {/* Tank size */}
         <Section label="Tank Size">
           <div className="grid grid-cols-3 gap-2">
             {TANK_SIZES.map(({ value, label, desc }) => (
@@ -71,24 +70,23 @@ export default function TankOptions({ state, onStateChange }: TankOptionsProps) 
                 onClick={() => setTankSize(value)}
                 className={`flex flex-col items-center rounded-xl border px-3 py-3 text-center transition-all ${
                   state.tankSize === value
-                    ? "border-sage bg-sage/10 shadow-sm"
-                    : "border-transparent bg-white/60 hover:bg-white/80"
+                    ? "border-mint/30 bg-mint/10 shadow-sm shadow-mint/5"
+                    : "border-white/5 bg-white/3 hover:bg-white/6"
                 }`}
               >
                 <span
                   className={`text-sm font-semibold ${
-                    state.tankSize === value ? "text-forest" : "text-deep-green/70"
+                    state.tankSize === value ? "text-mint" : "text-white/60"
                   }`}
                 >
                   {label}
                 </span>
-                <span className="mt-0.5 text-[11px] text-forest/50">{desc}</span>
+                <span className="mt-0.5 text-[11px] text-white/30">{desc}</span>
               </button>
             ))}
           </div>
         </Section>
 
-        {/* Plants */}
         <Section label="Plants">
           <ul className="space-y-2">
             {PLANTS.map(({ name, desc }) => {
@@ -100,15 +98,15 @@ export default function TankOptions({ state, onStateChange }: TankOptionsProps) 
                     onClick={() => togglePlant(name)}
                     className={`flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left transition-all ${
                       selected
-                        ? "border-sage/50 bg-sage/10 shadow-sm"
-                        : "border-transparent bg-white/60 hover:bg-white/80"
+                        ? "border-mint/25 bg-mint/8 shadow-sm shadow-mint/5"
+                        : "border-white/5 bg-white/3 hover:bg-white/6"
                     }`}
                   >
                     <span
                       className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border text-xs transition-colors ${
                         selected
-                          ? "border-sage bg-sage text-white"
-                          : "border-forest/20 bg-white"
+                          ? "border-mint bg-mint text-white"
+                          : "border-white/15 bg-white/5"
                       }`}
                     >
                       {selected && "✓"}
@@ -116,12 +114,12 @@ export default function TankOptions({ state, onStateChange }: TankOptionsProps) 
                     <div>
                       <span
                         className={`block text-sm font-medium ${
-                          selected ? "text-forest" : "text-deep-green/70"
+                          selected ? "text-mint" : "text-white/60"
                         }`}
                       >
                         {name}
                       </span>
-                      <span className="block text-[11px] text-forest/45">{desc}</span>
+                      <span className="block text-[11px] text-white/25">{desc}</span>
                     </div>
                   </button>
                 </li>
@@ -130,7 +128,6 @@ export default function TankOptions({ state, onStateChange }: TankOptionsProps) 
           </ul>
         </Section>
 
-        {/* Rocks */}
         <Section label="Hardscape">
           <ul className="space-y-2">
             {ROCKS.map(({ name, desc }) => {
@@ -142,15 +139,15 @@ export default function TankOptions({ state, onStateChange }: TankOptionsProps) 
                     onClick={() => toggleRock(name)}
                     className={`flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left transition-all ${
                       selected
-                        ? "border-sage/50 bg-sage/10 shadow-sm"
-                        : "border-transparent bg-white/60 hover:bg-white/80"
+                        ? "border-mint/25 bg-mint/8 shadow-sm shadow-mint/5"
+                        : "border-white/5 bg-white/3 hover:bg-white/6"
                     }`}
                   >
                     <span
                       className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border text-xs transition-colors ${
                         selected
-                          ? "border-sage bg-sage text-white"
-                          : "border-forest/20 bg-white"
+                          ? "border-mint bg-mint text-white"
+                          : "border-white/15 bg-white/5"
                       }`}
                     >
                       {selected && "✓"}
@@ -158,12 +155,12 @@ export default function TankOptions({ state, onStateChange }: TankOptionsProps) 
                     <div>
                       <span
                         className={`block text-sm font-medium ${
-                          selected ? "text-forest" : "text-deep-green/70"
+                          selected ? "text-mint" : "text-white/60"
                         }`}
                       >
                         {name}
                       </span>
-                      <span className="block text-[11px] text-forest/45">{desc}</span>
+                      <span className="block text-[11px] text-white/25">{desc}</span>
                     </div>
                   </button>
                 </li>
@@ -172,7 +169,6 @@ export default function TankOptions({ state, onStateChange }: TankOptionsProps) 
           </ul>
         </Section>
 
-        {/* Lighting */}
         <Section label="Lighting">
           <div className="grid grid-cols-3 gap-2">
             {LIGHTING.map(({ value, label, color }) => (
@@ -182,14 +178,14 @@ export default function TankOptions({ state, onStateChange }: TankOptionsProps) 
                 onClick={() => setLighting(value)}
                 className={`flex flex-col items-center gap-2 rounded-xl border px-3 py-3 transition-all ${
                   state.lighting === value
-                    ? "border-sage bg-sage/10 shadow-sm"
-                    : "border-transparent bg-white/60 hover:bg-white/80"
+                    ? "border-mint/30 bg-mint/10 shadow-sm shadow-mint/5"
+                    : "border-white/5 bg-white/3 hover:bg-white/6"
                 }`}
               >
                 <span className={`h-4 w-4 rounded-full ${color} shadow-sm`} />
                 <span
                   className={`text-xs font-medium ${
-                    state.lighting === value ? "text-forest" : "text-deep-green/60"
+                    state.lighting === value ? "text-mint" : "text-white/40"
                   }`}
                 >
                   {label}
@@ -212,7 +208,7 @@ function Section({
 }) {
   return (
     <div>
-      <span className="mb-3 block text-xs font-semibold uppercase tracking-wider text-forest/50">
+      <span className="mb-3 block text-xs font-semibold uppercase tracking-wider text-white/25">
         {label}
       </span>
       {children}
